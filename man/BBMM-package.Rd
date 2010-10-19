@@ -10,7 +10,9 @@ This package fits a Brownian bridge movement model to observed locations
     to animal location data obtained by a Global Positioning System (GPS) 
     or Very High Frequency (VHF) device. The model provides an empirical 
     estimate of the movement path of an animal using discrete location 
-    data obtained at relatively short time intervals.
+    data obtained at relatively short time intervals. This package allows the user
+    to specify the grid cell size and extent over which the probability of use
+    will be estimated.
 
 }
 
@@ -18,8 +20,8 @@ This package fits a Brownian bridge movement model to observed locations
 \tabular{ll}{
 Package: \tab BBMM\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2010-05-01\cr
+Version: \tab 2.0\cr
+Date: \tab 2010-10-19\cr
 License: \tab GNU General Public License\cr
 LazyLoad: \tab yes\cr
 

@@ -21,13 +21,13 @@ brownian.bridge(x, y, time.lag, location.error, area.grid = NULL, cell.size = NU
 }
 
 \arguments{
-  \item{x}{Vector of X coordinates (in meters) of locations, ordered in time.}
-  \item{y}{Vector of Y coordinates (in meters) of locations, ordered in time.}
+  \item{x}{Vector of x coordinates (in meters) of locations, ordered in time.}
+  \item{y}{Vector of y coordinates (in meters) of locations, ordered in time.}
   \item{time.lag}{Vector of time differences (in minutes) between 
   successive locations (length(time.lag) = length(x) - 1).}
-  \item{location.error}{Either a mean location error or a vector of errors 
-  with 1 for each observation. Usually based on GPS/VHF/GIS error.}
-  \item{area.grid}{(optional) Matrix or data frame of X and Y coordinates of cell 
+  \item{location.error}{The standard deviation of normally distributed location errors (single value or vector of 
+  1 value for each observation).}
+  \item{area.grid}{(optional) Matrix or data frame of x and y coordinates of cell 
   center ponts on a rectangular grid that defines the area in which to 
   estimate probability of use. If missing, a grid is created by expanding 
   the range of x and y by 1 standard deviation and using cell.size.}
@@ -57,8 +57,8 @@ to see names of all returned components.
 
     Components of the returned object are as follows:
   \item{Brownian motion variance}{Estimated Brownian motion variance.}
-  \item{x}{Vector of X coordinates for grid cells.}
-  \item{y}{Vector of Y coordinates for grid cells.}
+  \item{x}{Vector of x coordinates for grid cells.}
+  \item{y}{Vector of y coordinates for grid cells.}
   \item{probability}{Estimated proportion of time spent in each grid cell.}
 
 }
@@ -88,7 +88,7 @@ Maintainer: Ryan Nielson <rnielson@west-inc.com>
   
 \examples{
 data(locations)
-BBMM = brownian.bridge(x=locations$x, y=locations$y, 
+BBMM <- brownian.bridge(x=locations$x, y=locations$y, 
             time.lag=locations$time.lag, location.error=20, 
             cell.size=50)
 

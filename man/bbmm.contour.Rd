@@ -8,7 +8,7 @@
     utilization distribution. This function was built for the BBMM package and 
     the output from \code{\link{brownian.bridge}}, but could be used to produce
     contours for any probabilty density grid. The contours are determined by 
-    integration.
+    integration using the trapezoidal rule.
 }
 
 \usage{
@@ -52,22 +52,22 @@ Maintainer: Ryan Nielson <rnielson@west-inc.com>
 
 \examples{
 data(locations)
-BBMM = brownian.bridge(x=locations$x, y=locations$y, 
+BBMM <- brownian.bridge(x=locations$x, y=locations$y, 
             time.lag=locations$time.lag, location.error=20, 
             cell.size=50)
 bbmm.summary(BBMM)
-contours = bbmm.contour(BBMM, levels=c(seq(50, 90, by=10), 95, 99), 
+contours <- bbmm.contour(BBMM, levels=c(seq(50, 90, by=10), 95, 99), 
         locations=locations, plot=TRUE)
 print(contours)
 
 # Create data.frame indicating cells within the 50% contour and export as Ascii Grid
-bbmm.contour = data.frame(x = BBMM$x, y = BBMM$y, probability = BBMM$probability) 
-bbmm.contour = bbmm.contour[bbmm.contour$probability >= contours$Z[1],] 
-bbmm.contour$in.out = 1
+contour.50 <- data.frame(x = BBMM$x, y = BBMM$y, probability = BBMM$probability) 
+contour.50 <- contour.50[contour.50$probability >= contours$Z[1],] 
+contour.50$in.out <- 1
 
 # Not run: require(maptools) 
-# Not run: m = SpatialPixelsDataFrame(points = bbmm.contour[c("x", "y")], data=bbmm.contour) 
-# Not run: m = as(m, "SpatialGridDataFrame") 
+# Not run: m <- SpatialPixelsDataFrame(points = contour.50[c("x", "y")], data=contour.50) 
+# Not run: m <- as(m, "SpatialGridDataFrame") 
 # Not run: writeAsciiGrid(m, "contour.asc", attr=ncol(m)) 
 
 }

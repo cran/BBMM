@@ -13,10 +13,10 @@ brownian.motion.variance(n.locs, time.lag, location.error, x, y)
   \item{time.lag}{Vector of time differences (usually in minutes) between 
     successive locations. The length(time.lag) = length(x) - 1. 
 }
-  \item{location.error}{Either a mean location error or a vector of locaton 
-    errors, one for each location.}
-  \item{x}{Vector of X coordinates (meters) of locations, ordered in time.}
-  \item{y}{Vector of Y coordinates (meters) of locations, ordered in time.}
+  \item{location.error}{The standard deviation of normally distributed location errors (single value or vector of 
+  1 value for each observation).}
+  \item{x}{Vector of x coordinates (meters) of locations, ordered in time.}
+  \item{y}{Vector of y coordinates (meters) of locations, ordered in time.}
 
 }
 
@@ -53,7 +53,7 @@ Maintainer: Ryan Nielson <rnielson@west-inc.com>
 
 \examples{
 data(locations)
-BBMM = brownian.bridge(x=locations$x, y=locations$y, 
+BBMM <- brownian.bridge(x=locations$x, y=locations$y, 
             time.lag=locations$time.lag, location.error=20, 
             cell.size=50)
 
