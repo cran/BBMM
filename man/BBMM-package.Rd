@@ -20,8 +20,8 @@ This package fits a Brownian bridge movement model to observed locations
 \tabular{ll}{
 Package: \tab BBMM\cr
 Type: \tab Package\cr
-Version: \tab 2.1\cr
-Date: \tab 2010-10-21\cr
+Version: \tab 2.2\cr
+Date: \tab 2011-02-21\cr
 License: \tab GNU General Public License\cr
 LazyLoad: \tab yes\cr
 

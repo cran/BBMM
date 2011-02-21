@@ -8,7 +8,7 @@
 !
 !   To compile with gfortran:
 !
-!   gfortran -shared -o bbmm.dll bbmm.f95 
+!   gfortran -shared -o BBMM.dll BBMM.f95 
 !
 
 ! ---------------------------------------------------------------------------
@@ -41,6 +41,8 @@ integer :: i
 
 ! Output variables
 double precision, dimension(gridSize) :: probability
+
+int = 0.0
 
 do i = 1, nLocs-1
     theta = 0.0                            
