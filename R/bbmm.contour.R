@@ -8,14 +8,16 @@ function(x, levels, locations=NULL, plot=TRUE){
     # plot = logical
     #
 	
-	probability <- NULL
-    for(i in levels){
-        contour.z <-  function(z){
-            abs(i/100 - sum(x[[4]][x[[4]] >= z] - z))
+  v <- na.omit(x$probability)
+  probability <- NULL
+  for (i in levels) {
+		contour.z <- function(z) {
+            abs(i/100 - sum(v[v >= z])/sum(v))
         }
-        probability <- c(probability, optimize(contour.z, 
-				c(0, max(x$probability)), tol=.Machine$double.eps)$minimum)
-    }
+    probability <- c(probability, optimize(contour.z, 
+		c(0, max(v)), tol = .Machine$double.eps)$minimum)
+  }
+
    ans <- vector("list", 2)
    names(ans) <- c("Contour", "Z")
    ans[[1]] <- paste(levels, "%", sep='')
@@ -35,4 +37,3 @@ function(x, levels, locations=NULL, plot=TRUE){
    }
    return(ans)
 }
-

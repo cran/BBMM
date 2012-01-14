@@ -16,7 +16,7 @@
 \examples{
 data(locations)
 BBMM <- brownian.bridge(x=locations$x, y=locations$y, 
-            time.lag=locations$time.lag, location.error=20, 
+            time.lag=locations$time.lag[-1], location.error=20, 
             cell.size=50)
 bbmm.summary(BBMM)
 contours <- bbmm.contour(BBMM, levels=seq(50, 90, by=10), 

@@ -8,4 +8,3 @@ function(x){
     cat( "Grid cell size : ", abs(x$x[1]-x$x[2]), fill=TRUE)
 
 }
-
