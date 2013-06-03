@@ -8,7 +8,7 @@ function(x, y, time.lag, location.error, area.grid=NULL, cell.size=NULL, time.st
     #   location.error = Either the standarad deviation of normally distributed 
 	#			location error or a vector of SDs (1 for each location).
     #   area.grid = Matrix or data frame of "x" and "y" coords for brownian bridge. 
-    #           If missing, defaults to minimum/maximum x/y minus/plus 1/2 sd of the  
+    #           If missing, defaults to minimum/maximum x/y minus/plus 1 SD of the  
     #           range of x/y. If area.grid is provided, cell sizes must be square and uniform. 
     #   cell.size = Cell size for grid, if grid not provided.
     #   time.step = The Brownian bridge probability density function 
@@ -81,7 +81,7 @@ function(x, y, time.lag, location.error, area.grid=NULL, cell.size=NULL, time.st
 					((1-alpha)^2)*(location.error[i]^2) + 
 					(alpha^2)*(location.error[i+1]^2)
 				ZTZ <- (area.grid[,1] - mu.x)^2 + (area.grid[,2] - mu.y)^2
-				theta <- (1/sqrt(2*pi*sigma.2))*exp(-ZTZ/(2*sigma.2)) 
+				theta <- (1/(2*pi*sigma.2))*exp(-ZTZ/(2*sigma.2)) 
 				int <- int + theta
 				tm <- tm + time.step
 			}
